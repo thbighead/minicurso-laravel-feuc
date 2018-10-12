@@ -9,12 +9,20 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
                     Listing Products!
+                    <ul class="list-group">
+                        @foreach ($products as $product)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $product->name }}
+                            {{-- <span class="badge badge-primary badge-pill">14</span> --}}
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

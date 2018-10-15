@@ -14,15 +14,7 @@
                     </div>
                     @endif
 
-                    Listing Products!
-                    <ul class="list-group">
-                        @foreach ($products as $product)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $product->name }}
-                            {{-- <span class="badge badge-primary badge-pill">14</span> --}}
-                        </li>
-                        @endforeach
-                    </ul>
+                    @include('layouts.stocks_accordion')
                 </div>
             </div>
         </div>

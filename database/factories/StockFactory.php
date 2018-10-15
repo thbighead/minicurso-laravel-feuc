@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
-use App\Product;
+use App\Stock;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Product;
 |
 */
 
-$factory->define(Product::class, function (Faker $faker) {
+$factory->define(Stock::class, function (Faker $faker) {
     return [
-        'name' => $faker->sentence(5, true),
-        'price' => $faker->randomFloat(NULL, 0, 9999),
+        'name' => $faker->company,
+        'address' => $faker->address,
     ];
 });

@@ -14,6 +14,7 @@
                     </div>
                     @endif
 
+                    <a class="btn btn-success" href="{{ route('product.create') }}">New Product</a>
                     @include('layouts.stocks_accordion')
                 </div>
             </div>

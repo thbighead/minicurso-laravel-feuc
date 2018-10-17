@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Stock;
-use App\Product;
 
-class ProductController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products/index', ['stocks' => Stock::with('products')->get()]);
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products/create', ['stocks' => Stock::all(['id', 'name'])->pluck('name', 'id')]);
+        //
     }
 
     /**
@@ -36,13 +34,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $newProduct = Product::create($request->only(['name', 'description', 'price']));
-        $newProduct->stocks()->attach($request->get('stocks'));
-
-        return view('products/index', [
-            'stocks' => Stock::with('products')->get(),
-            'created' => (bool) $newProduct
-        ]);
+        //
     }
 
     /**
@@ -53,9 +45,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('products/show', [
-            'product' => Product::with('stocks')->findOrFail($id)
-        ]);
+        //
     }
 
     /**
@@ -89,8 +79,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::destroy($id);
-
-        return redirect()->back();
+        //
     }
 }

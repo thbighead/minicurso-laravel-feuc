@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{ route('stock.index') }}">Stocks</a>
+                            <span class="badge badge-primary badge-pill">{{ $n_stocks }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{ route('product.index') }}">Products</a>
+                            <span class="badge badge-primary badge-pill">{{ $n_products }}</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

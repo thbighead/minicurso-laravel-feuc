@@ -9,11 +9,11 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'price'];
+    protected $fillable = ['name', 'price', 'description'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public function stocks()
     {
-        $this->belongsToMany('App\Stock');
+        return $this->belongsToMany('App\Stock');
     }
 }

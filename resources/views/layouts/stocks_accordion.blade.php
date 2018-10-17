@@ -13,8 +13,13 @@
                 <ul class="list-group">
                     @foreach ($stock->products as $product)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ $product->name }}
-                        {{-- <span class="badge badge-primary badge-pill">14</span> --}}
+                        <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
+                        <form action="{{ route('product.destroy', $product->id) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button class="btn btn-danger btn-sm " type="submit">
+                                    <i class="material-icons">delete</i>
+                            </button>
+                        </form>
                     </li>
                     @endforeach
                 </ul>

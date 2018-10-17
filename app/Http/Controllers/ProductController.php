@@ -66,7 +66,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products/edit', [
+            'stocks' => Stock::all(['id', 'name'])->pluck('name', 'id'),
+            'product' => Product::with('stocks')->findOrFail($id)
+        ]);
     }
 
     /**
@@ -78,7 +81,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $succeeded = true;
+        $product = Product::findOrFail($id);
+        if($product) {
+            $succeeded = $product->update($request->except('stocks'))
+                && $product->stocks()->sync($request->get('stocks'));
+        } else {
+            $succeeded = false;
+        }
+
+        return view('products/index', [
+            'stocks' => Stock::with('products')->get(),
+            'updated' => $succeeded
+        ]);
     }
 
     /**
